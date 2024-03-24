@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwsqyk1oh04nj"]
+
+[ext_resource type="Script" path="res://scenes/entry.gd" id="1_4choh"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4choh")
+
+[node name="StartServer" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Start Server"
+
+[node name="StartClient" type="Button" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_top = 86.0
+offset_right = 100.0
+offset_bottom = 117.0
+text = "Start Client"
+
+[connection signal="pressed" from="StartServer" to="." method="_on_start_server_pressed"]
+[connection signal="pressed" from="StartClient" to="." method="_on_start_client_pressed"]

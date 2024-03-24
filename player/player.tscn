@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://wvnpeybsva6b"]
+
+[ext_resource type="Script" path="res://player/Player.cs" id="1_oydju"]
+[ext_resource type="Script" path="res://addons/HLNC/NetworkTransform.cs" id="2_t47eb"]
+[ext_resource type="Script" path="res://addons/HLNC/NetworkVisibility.cs" id="2_whe68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pqwd"]
+resource_local_to_scene = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_gsi7k"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_oydju")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_8pqwd")
+mesh = SubResource("SphereMesh_gsi7k")
+
+[node name="NetworkVisibility" type="Node3D" parent="." node_paths=PackedStringArray("nodes")]
+script = ExtResource("2_whe68")
+nodes = [NodePath("../Camera3D")]
+
+[node name="NetworkTransform" type="Node3D" parent="."]
+script = ExtResource("2_t47eb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 2)
